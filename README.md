@@ -1,6 +1,6 @@
-# 💳 SwiftPay v2
+# 💳 SwiftPay
 
-SwiftPay v2 is a full-stack digital payment application that allows users to manage wallets, perform transactions, and access various financial services securely.
+SwiftPay is a full-stack digital payment application that allows users to manage wallets, perform transactions, and access various financial services securely.
 
 ---
 
