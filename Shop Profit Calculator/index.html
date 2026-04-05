@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Haideri General Store</h2>
+        <nav>
+            <span><button class="p profit-screen"><h3>Profit</h3></button></span>
+            <span><button class="p record-screen"><h3>Record</h3></button></span>
+
+        </nav>
+        <div class="screen profit active ">
+        <div class="date-con">
+        <span><h3>Date: </h3></span>
+        <span class="date"><h3></h3></span>
+        </div>
+        <div class="tp">
+            <span><h3>Total Profit</h3></span>
+            <span class=""><h3><span>Rs:</span><span class="total-profit">0</span></h3></span>
+        </div>
+        <div class="dp">
+            <span><h3>Today Profit</h3></span>
+             <span class=""><h3><span>Rs:</span><span class="today-profit">0</span></h3></span>
+        </div>
+
+
+        <label for="addP">Write Profit</label>
+        <input type="number" placeholder="Enter Amount" id="addP">
+        <button class="btn add-profit"><h3>Add Profit</h3></button>
+        <button class="btn submit-profit"><h3>Submit Profit</h3></button>
+
+</div>
+
+<div class="screen record ">
+    <div class="info">
+        <span><h3>Date</h3></span>
+        <span><h3>Profit</h3></span>
+    </div>
+    <div class="cards">
+
+    </div>
+    </div>
+</div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

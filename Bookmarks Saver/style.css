@@ -1,0 +1,115 @@
+
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family:'poppins'
+
+}
+body{
+    background-color: #940EF0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:1rem;
+}
+.container{
+    width:100%;
+    max-width:400px;
+    height:100vh;
+    max-height:400px;
+    background-color: #C0C10D;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0px 0px 15px rgba(0,0,0,0.5);
+    padding:1rem;
+
+}
+.input-fields{
+    display:flex;
+    flex-direction: column;
+    gap:1rem;
+    margin-bottom:1rem;
+
+}
+input{
+    border-radius:6px;
+    border:none;
+    padding-left:5px;
+    height:5vh;
+     box-shadow:0px 0px 8px rgba(0,0,0,0.5);
+}
+.container h2{
+    margin-bottom:.6rem;
+}
+button{
+    border:none;
+    background-color: #433286;
+    box-shadow:0px 0px 5px rgba(0,0,0,0.5);
+    border-radius:5px;
+    height:5vh;
+    color:white;
+    cursor:pointer;
+    transition:all 0.3s ease;
+
+
+
+}
+button:hover{
+    transform: scale(1.02);
+}
+.bookmarks-list{
+
+    display:flex;
+    flex-direction: column;
+    gap:1rem;
+    height:31vh;
+    overflow-y:auto;
+    border:none;
+    padding:4px;
+
+
+}
+.li{
+    display:flex;
+    justify-content:space-between;
+    background-color: #E245F3;
+    padding:7px 8px 0px 8px;
+    border-radius:5px;
+    box-shadow:0px 0px 5px rgba(0,0,0,0.5);
+    color:white;
+    height:6vh;
+}
+#remove{
+
+    background-color: red;
+    padding:0px 10px;
+    height:4vh;
+    box-shadow:none;
+    
+
+}
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius:5px;
+}
+
+/* Track (background) */
+.bookmarks-list::-webkit-scrollbar-track {
+  background: #C0C10D;
+}
+
+/* Handle (jo move hota hai) */
+.bookmarks-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Hover effect */
+.bookmarks-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
