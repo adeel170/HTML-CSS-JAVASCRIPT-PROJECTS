@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SwiftPay</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== SPLASH SCREEN ===== -->
+  <div id="splash-screen" class="screen active">
+    <div class="splash-bg"></div>
+    <div class="splash-content">
+      <div class="logo-wrap">
+        <div class="logo-icon">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <span class="logo-text">SwiftPay</span>
+      </div>
+      <p class="splash-tagline">Fast. Secure. Yours.</p>
+      <div class="splash-loader">
+        <div class="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ONBOARDING ===== -->
+  <div id="onboarding-screen" class="screen">
+    <div class="onboard-bg"></div>
+    <div class="onboard-slides">
+      <div class="onboard-slide active" data-slide="0">
+        <div class="onboard-illustration">
+          <div class="ill-circle"></div>
+          <i class="fa-solid fa-paper-plane ill-icon"></i>
+        </div>
+        <h2>Send Money Instantly</h2>
+        <p>Transfer funds to anyone in Pakistan within seconds — no delays, no hassle.</p>
+      </div>
+      <div class="onboard-slide" data-slide="1">
+        <div class="onboard-illustration">
+          <div class="ill-circle green"></div>
+          <i class="fa-solid fa-shield-halved ill-icon"></i>
+        </div>
+        <h2>Bank-Grade Security</h2>
+        <p>Your money is protected with 256-bit encryption and biometric authentication.</p>
+      </div>
+      <div class="onboard-slide" data-slide="2">
+        <div class="onboard-illustration">
+          <div class="ill-circle orange"></div>
+          <i class="fa-solid fa-wallet ill-icon"></i>
+        </div>
+        <h2>All-in-One Wallet</h2>
+        <p>Pay bills, recharge mobile, shop online — everything from one app.</p>
+      </div>
+    </div>
+    <div class="onboard-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <div class="onboard-actions">
+      <button class="btn-primary" id="onboard-next-btn">Next</button>
+      <button class="btn-ghost" id="onboard-skip-btn">Skip</button>
+    </div>
+  </div>
+
+  <!-- ===== AUTH SCREEN ===== -->
+  <div id="auth-screen" class="screen">
+    <div class="auth-bg"></div>
+
+    <!-- Auth Header -->
+    <div class="auth-header">
+      <div class="logo-wrap small">
+        <div class="logo-icon sm">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <span class="logo-text sm">SwiftPay</span>
+      </div>
+    </div>
+
+    <!-- Auth Tabs -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Login</button>
+      <button class="auth-tab" data-tab="signup">Sign Up</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div class="auth-form active" id="login-form">
+      <h2 class="form-title">Welcome Back 👋</h2>
+      <p class="form-sub">Login to your SwiftPay account</p>
+
+      <div class="input-group">
+        <i class="fa-solid fa-phone input-icon"></i>
+        <input type="tel" id="login-phone" placeholder="Mobile Number (03XX-XXXXXXX)" maxlength="13" />
+      </div>
+      <div class="input-group">
+        <i class="fa-solid fa-lock input-icon"></i>
+        <input type="password" id="login-pass" placeholder="Password" />
+        <i class="fa-solid fa-eye toggle-pass" id="toggle-login-pass"></i>
+      </div>
+      <div class="forgot-row">
+        <a href="#" class="forgot-link">Forgot PIN / Password?</a>
+      </div>
+
+      <button class="btn-primary full" id="login-btn">
+        <span>Login</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+      <div class="divider"><span>or continue with</span></div>
+      <div class="social-row">
+        <button class="social-btn"><i class="fa-brands fa-google"></i> Google</button>
+        <button class="social-btn"><i class="fa-brands fa-facebook"></i> Facebook</button>
+      </div>
+    </div>
+
+    <!-- SIGNUP FORM -->
+    <div class="auth-form" id="signup-form">
+      <h2 class="form-title">Create Account 🚀</h2>
+      <p class="form-sub">Join millions of SwiftPay users</p>
+
+      <div class="input-group">
+        <i class="fa-solid fa-user input-icon"></i>
+        <input type="text" id="signup-name" placeholder="Full Name" />
+      </div>
+      <div class="input-group">
+        <i class="fa-solid fa-phone input-icon"></i>
+        <input type="tel" id="signup-phone" placeholder="Mobile Number (03XX-XXXXXXX)" />
+      </div>
+      <div class="input-group">
+        <i class="fa-solid fa-id-card input-icon"></i>
+        <input type="text" id="signup-cnic" placeholder="CNIC (XXXXX-XXXXXXX-X)" maxlength="15" />
+      </div>
+      <div class="input-group">
+        <i class="fa-solid fa-lock input-icon"></i>
+        <input type="password" id="signup-pass" placeholder="Create Password" />
+        <i class="fa-solid fa-eye toggle-pass" id="toggle-signup-pass"></i>
+      </div>
+      <div class="input-group">
+        <i class="fa-solid fa-lock input-icon"></i>
+        <input type="password" id="signup-confirm" placeholder="Confirm Password" />
+      </div>
+
+      <div class="terms-row">
+        <input type="checkbox" id="terms-check" />
+        <label for="terms-check">I agree to <a href="#">Terms & Conditions</a></label>
+      </div>
+
+      <button class="btn-primary full" id="signup-btn">
+        <span>Create Account</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== OTP SCREEN ===== -->
+  <div id="otp-screen" class="screen">
+    <div class="auth-bg"></div>
+    <div class="otp-content">
+      <button class="back-btn" onclick="goBack('auth')"><i class="fa-solid fa-arrow-left"></i></button>
+      <div class="otp-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+      <h2>OTP Verification</h2>
+      <p>Enter the 6-digit code sent to <strong id="otp-phone-display">+92 3XX-XXXXXXX</strong></p>
+
+      <div class="otp-inputs">
+        <input type="text" class="otp-box" maxlength="1" />
+        <input type="text" class="otp-box" maxlength="1" />
+        <input type="text" class="otp-box" maxlength="1" />
+        <input type="text" class="otp-box" maxlength="1" />
+        <input type="text" class="otp-box" maxlength="1" />
+        <input type="text" class="otp-box" maxlength="1" />
+      </div>
+
+      <button class="btn-primary full" id="verify-otp-btn">Verify OTP</button>
+      <p class="resend-row">Didn't receive? <a href="#" id="resend-otp">Resend OTP</a> <span id="otp-timer">(30s)</span></p>
+    </div>
+  </div>
+
+  <!-- ===== MAIN APP ===== -->
+  <div id="app-screen" class="screen">
+
+    <!-- ===== HOME TAB ===== -->
+    <div class="tab-content active" id="tab-home">
+      <div class="home-header">
+        <div class="header-top">
+          <div class="user-info">
+            <div class="avatar" id="user-avatar">A</div>
+            <div>
+              <p class="greeting" id="greeting-text">Good Morning,</p>
+              <h3 class="username" id="display-name">Adeel</h3>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="icon-btn" id="notify-btn">
+              <i class="fa-solid fa-bell"></i>
+              <span class="badge">3</span>
+            </button>
+            <button class="icon-btn" id="qr-btn">
+              <i class="fa-solid fa-qrcode"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Balance Card -->
+        <div class="balance-card">
+          <div class="card-bg-pattern"></div>
+          <div class="card-top">
+            <span class="card-label">Total Balance</span>
+            <button class="eye-btn" id="toggle-balance">
+              <i class="fa-solid fa-eye" id="eye-icon"></i>
+            </button>
+          </div>
+          <div class="balance-amount" id="balance-display">
+            <span class="currency">PKR</span>
+            <span class="amount" id="balance-value">25,840.00</span>
+          </div>
+          <div class="card-bottom">
+            <div class="card-stat">
+              <i class="fa-solid fa-arrow-up stat-up"></i>
+              <div>
+                <span class="stat-label">Income</span>
+                <span class="stat-val">+45,200</span>
+              </div>
+            </div>
+            <div class="card-divider"></div>
+            <div class="card-stat">
+              <i class="fa-solid fa-arrow-down stat-down"></i>
+              <div>
+                <span class="stat-label">Expense</span>
+                <span class="stat-val">-19,360</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <section class="section">
+        <h4 class="section-title">Quick Actions</h4>
+        <div class="quick-grid">
+          <button class="quick-btn" onclick="openModal('send-modal')">
+            <div class="quick-icon teal"><i class="fa-solid fa-paper-plane"></i></div>
+            <span>Send</span>
+          </button>
+          <button class="quick-btn" onclick="openModal('receive-modal')">
+            <div class="quick-icon orange"><i class="fa-solid fa-qrcode"></i></div>
+            <span>Receive</span>
+          </button>
+          <button class="quick-btn" onclick="openModal('topup-modal')">
+            <div class="quick-icon purple"><i class="fa-solid fa-plus"></i></div>
+            <span>Top Up</span>
+          </button>
+          <button class="quick-btn" onclick="openModal('withdraw-modal')">
+            <div class="quick-icon pink"><i class="fa-solid fa-money-bill-wave"></i></div>
+            <span>Withdraw</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="section">
+        <h4 class="section-title">Services</h4>
+        <div class="services-grid">
+          <button class="service-card" onclick="openModal('mobile-modal')">
+            <i class="fa-solid fa-mobile-screen service-icon teal"></i>
+            <span>Mobile<br>Recharge</span>
+          </button>
+          <button class="service-card" onclick="openModal('bill-modal')">
+            <i class="fa-solid fa-bolt service-icon orange"></i>
+            <span>Pay<br>Bills</span>
+          </button>
+          <button class="service-card" onclick="openModal('bank-modal')">
+            <i class="fa-solid fa-building-columns service-icon purple"></i>
+            <span>Bank<br>Transfer</span>
+          </button>
+          <button class="service-card" onclick="openModal('shop-modal')">
+            <i class="fa-solid fa-bag-shopping service-icon pink"></i>
+            <span>Online<br>Shopping</span>
+          </button>
+          <button class="service-card">
+            <i class="fa-solid fa-film service-icon green"></i>
+            <span>Enter-<br>tainment</span>
+          </button>
+          <button class="service-card">
+            <i class="fa-solid fa-ellipsis service-icon gray"></i>
+            <span>More<br>Services</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Offers Banner -->
+      <section class="section">
+        <div class="offer-banner">
+          <div class="offer-text">
+            <span class="offer-tag">LIMITED OFFER</span>
+            <h4>Get 2% Cashback on every transfer!</h4>
+            <p>Valid till 31st March 2026</p>
+          </div>
+          <div class="offer-img"><i class="fa-solid fa-gift"></i></div>
+        </div>
+      </section>
+
+      <!-- Recent Transactions -->
+      <section class="section">
+        <div class="section-header">
+          <h4 class="section-title">Recent Transactions</h4>
+          <button class="see-all-btn" onclick="switchTab('transactions')">See All</button>
+        </div>
+        <div class="txn-list" id="recent-txn-list"></div>
+      </section>
+
+      <div class="bottom-space"></div>
+    </div>
+
+    <!-- ===== TRANSACTIONS TAB ===== -->
+    <div class="tab-content" id="tab-transactions">
+      <div class="page-header">
+        <h2>Transactions</h2>
+        <button class="icon-btn"><i class="fa-solid fa-sliders"></i></button>
+      </div>
+
+      <div class="filter-chips">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="sent">Sent</button>
+        <button class="chip" data-filter="received">Received</button>
+        <button class="chip" data-filter="bills">Bills</button>
+        <button class="chip" data-filter="topup">Top Up</button>
+      </div>
+
+      <div class="txn-search">
+        <i class="fa-solid fa-search"></i>
+        <input type="text" id="txn-search-input" placeholder="Search transactions..." />
+      </div>
+
+      <div class="txn-full-list" id="full-txn-list"></div>
+      <div class="bottom-space"></div>
+    </div>
+
+    <!-- ===== WALLET TAB ===== -->
+    <div class="tab-content" id="tab-wallet">
+      <div class="page-header">
+        <h2>My Wallet</h2>
+        <button class="icon-btn"><i class="fa-solid fa-plus"></i></button>
+      </div>
+
+      <div class="wallet-card-wrap">
+        <div class="wallet-big-card">
+          <div class="wcard-bg"></div>
+          <div class="wcard-header">
+            <span>SwiftPay Wallet</span>
+            <i class="fa-solid fa-bolt wcard-logo"></i>
+          </div>
+          <div class="wcard-balance">
+            <small>Available Balance</small>
+            <h2>PKR 25,840.00</h2>
+          </div>
+          <div class="wcard-footer">
+            <span class="wcard-phone" id="wcard-phone">+92 300 1234567</span>
+            <span class="wcard-status">Active ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="wallet-stats">
+        <div class="wstat">
+          <i class="fa-solid fa-arrow-trend-up wstat-icon green"></i>
+          <div>
+            <span class="wstat-label">This Month Income</span>
+            <span class="wstat-val green">+PKR 45,200</span>
+          </div>
+        </div>
+        <div class="wstat">
+          <i class="fa-solid fa-arrow-trend-down wstat-icon red"></i>
+          <div>
+            <span class="wstat-label">This Month Expense</span>
+            <span class="wstat-val red">-PKR 19,360</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="section">
+        <h4 class="section-title">Spending Breakdown</h4>
+        <div class="spending-list">
+          <div class="spend-item">
+            <div class="spend-left">
+              <div class="spend-icon teal"><i class="fa-solid fa-paper-plane"></i></div>
+              <span>Transfers</span>
+            </div>
+            <div class="spend-right">
+              <div class="spend-bar-wrap"><div class="spend-bar" style="width:70%; background: var(--teal)"></div></div>
+              <span class="spend-pct">70%</span>
+            </div>
+          </div>
+          <div class="spend-item">
+            <div class="spend-left">
+              <div class="spend-icon orange"><i class="fa-solid fa-bolt"></i></div>
+              <span>Bills</span>
+            </div>
+            <div class="spend-right">
+              <div class="spend-bar-wrap"><div class="spend-bar" style="width:45%; background: var(--orange)"></div></div>
+              <span class="spend-pct">45%</span>
+            </div>
+          </div>
+          <div class="spend-item">
+            <div class="spend-left">
+              <div class="spend-icon purple"><i class="fa-solid fa-mobile-screen"></i></div>
+              <span>Recharge</span>
+            </div>
+            <div class="spend-right">
+              <div class="spend-bar-wrap"><div class="spend-bar" style="width:20%; background: var(--purple)"></div></div>
+              <span class="spend-pct">20%</span>
+            </div>
+          </div>
+          <div class="spend-item">
+            <div class="spend-left">
+              <div class="spend-icon pink"><i class="fa-solid fa-bag-shopping"></i></div>
+              <span>Shopping</span>
+            </div>
+            <div class="spend-right">
+              <div class="spend-bar-wrap"><div class="spend-bar" style="width:30%; background: var(--pink)"></div></div>
+              <span class="spend-pct">30%</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="bottom-space"></div>
+    </div>
+
+    <!-- ===== PROFILE TAB ===== -->
+    <div class="tab-content" id="tab-profile">
+      <div class="profile-header">
+        <div class="profile-avatar-big" id="profile-avatar-big">A</div>
+        <h2 id="profile-name">Adeel</h2>
+        <p id="profile-phone">+92 300 1234567</p>
+        <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Account</span>
+      </div>
+
+      <section class="section">
+        <h4 class="section-title">Account</h4>
+        <div class="settings-list">
+          <button class="setting-item">
+            <div class="setting-left">
+              <div class="setting-icon teal"><i class="fa-solid fa-user"></i></div>
+              <span>Personal Information</span>
+            </div>
+            <i class="fa-solid fa-chevron-right setting-arrow"></i>
+          </button>
+          <button class="setting-item">
+            <div class="setting-left">
+              <div class="setting-icon orange"><i class="fa-solid fa-shield-halved"></i></div>
+              <span>Security & Privacy</span>
+            </div>
+            <i class="fa-solid fa-chevron-right setting-arrow"></i>
+          </button>
+          <button class="setting-item">
+            <div class="setting-left">
+              <div class="setting-icon purple"><i class="fa-solid fa-bell"></i></div>
+              <span>Notifications</span>
+            </div>
+            <i class="fa-solid fa-chevron-right setting-arrow"></i>
+          </button>
+          <button class="setting-item">
+            <div class="setting-left">
+              <div class="setting-icon pink"><i class="fa-solid fa-fingerprint"></i></div>
+              <span>Biometric Login</span>
+            </div>
+            <div class="toggle-switch active" id="biometric-toggle"></div>
+          </button>
+        </div>
+      </section>
+
+      <section class="section">
+        <h4 class="section-title">Support</h4>
+        <div class="settings-list">
+          <button class="setting-item">
+            <div class="setting-left">
+              <div class="setting-icon green"><i class="fa-solid fa-headset"></i></div>
+              <span>Help & Support</span>
+            </div>
+            <i class="fa-solid fa-chevron-right setting-arrow"></i>
+          </button>
+          <button class="setting-item">
+            <div class="setting-left">
+              <div class="setting-icon gray"><i class="fa-solid fa-file-contract"></i></div>
+              <span>Terms & Conditions</span>
+            </div>
+            <i class="fa-solid fa-chevron-right setting-arrow"></i>
+          </button>
+          <button class="setting-item">
+            <div class="setting-left">
+              <div class="setting-icon gray"><i class="fa-solid fa-star"></i></div>
+              <span>Rate SwiftPay</span>
+            </div>
+            <i class="fa-solid fa-chevron-right setting-arrow"></i>
+          </button>
+        </div>
+      </section>
+
+      <button class="logout-btn" id="logout-btn">
+        <i class="fa-solid fa-right-from-bracket"></i> Logout
+      </button>
+
+      <div class="app-version">SwiftPay v2.4.1 • Made with ❤️ in Pakistan</div>
+      <div class="bottom-space"></div>
+    </div>
+
+    <!-- ===== BOTTOM NAV ===== -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" onclick="switchTab('home')" data-tab="home">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </button>
+      <button class="nav-btn" onclick="switchTab('transactions')" data-tab="transactions">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <span>History</span>
+      </button>
+      <button class="nav-btn center-btn" onclick="openModal('send-modal')">
+        <div class="center-icon"><i class="fa-solid fa-paper-plane"></i></div>
+      </button>
+      <button class="nav-btn" onclick="switchTab('wallet')" data-tab="wallet">
+        <i class="fa-solid fa-wallet"></i>
+        <span>Wallet</span>
+      </button>
+      <button class="nav-btn" onclick="switchTab('profile')" data-tab="profile">
+        <i class="fa-solid fa-user"></i>
+        <span>Profile</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ===== MODALS ===== -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeAllModals()"></div>
+
+  <!-- Send Money Modal -->
+  <div class="modal" id="send-modal">
+    <div class="modal-handle"></div>
+    <h3 class="modal-title"><i class="fa-solid fa-paper-plane teal-text"></i> Send Money</h3>
+    <div class="input-group">
+      <i class="fa-solid fa-phone input-icon"></i>
+      <input type="tel" id="send-phone" placeholder="Recipient Mobile Number" />
+    </div>
+    <div class="input-group">
+      <i class="fa-solid fa-pakistani-rupee-sign input-icon"></i>
+      <input type="number" id="send-amount" placeholder="Amount (PKR)" />
+    </div>
+    <div class="input-group">
+      <i class="fa-solid fa-comment input-icon"></i>
+      <input type="text" id="send-note" placeholder="Note (optional)" />
+    </div>
+    <div class="amount-shortcuts">
+      <button class="shortcut-chip" onclick="setAmount(500)">500</button>
+      <button class="shortcut-chip" onclick="setAmount(1000)">1,000</button>
+      <button class="shortcut-chip" onclick="setAmount(2000)">2,000</button>
+      <button class="shortcut-chip" onclick="setAmount(5000)">5,000</button>
+    </div>
+    <button class="btn-primary full" onclick="processSend()">
+      <i class="fa-solid fa-paper-plane"></i> Send Money
+    </button>
+  </div>
+
+  <!-- Receive Modal -->
+  <div class="modal" id="receive-modal">
+    <div class="modal-handle"></div>
+    <h3 class="modal-title"><i class="fa-solid fa-qrcode orange-text"></i> Receive Money</h3>
+    <div class="qr-wrapper">
+      <div class="qr-code-img">
+        <div class="qr-inner">
+          <i class="fa-solid fa-bolt qr-logo"></i>
+          <div class="qr-pattern">
+            <div class="qr-grid" id="qr-grid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="receive-info">
+      <p>Your SwiftPay Number</p>
+      <h3 id="receive-phone-num">+92 300 1234567</h3>
+    </div>
+    <button class="btn-secondary full" onclick="copyNumber()">
+      <i class="fa-solid fa-copy"></i> Copy Number
+    </button>
+    <button class="btn-primary full" onclick="shareQR()">
+      <i class="fa-solid fa-share-nodes"></i> Share QR Code
+    </button>
+  </div>
+
+  <!-- Top Up Modal -->
+  <div class="modal" id="topup-modal">
+    <div class="modal-handle"></div>
+    <h3 class="modal-title"><i class="fa-solid fa-plus purple-text"></i> Top Up Wallet</h3>
+    <p class="modal-sub">Choose a top-up method</p>
+    <div class="topup-methods">
+      <button class="topup-card" onclick="showToast('Bank transfer selected')">
+        <i class="fa-solid fa-building-columns"></i>
+        <span>Bank Transfer</span>
+      </button>
+      <button class="topup-card" onclick="showToast('ATM top-up selected')">
+        <i class="fa-solid fa-credit-card"></i>
+        <span>ATM / Card</span>
+      </button>
+      <button class="topup-card" onclick="showToast('Agent selected')">
+        <i class="fa-solid fa-store"></i>
+        <span>Agent Shop</span>
+      </button>
+      <button class="topup-card" onclick="showToast('EasyLoad selected')">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <span>EasyLoad</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Withdraw Modal -->
+  <div class="modal" id="withdraw-modal">
+    <div class="modal-handle"></div>
+    <h3 class="modal-title"><i class="fa-solid fa-money-bill-wave pink-text"></i> Withdraw Cash</h3>
+    <div class="input-group">
+      <i class="fa-solid fa-pakistani-rupee-sign input-icon"></i>
+      <input type="number" id="withdraw-amount" placeholder="Amount to Withdraw (PKR)" />
+    </div>
+    <div class="input-group">
+      <i class="fa-solid fa-location-dot input-icon"></i>
+      <input type="text" id="withdraw-cnic" placeholder="CNIC Number" />
+    </div>
+    <p class="modal-info-text"><i class="fa-solid fa-info-circle"></i> Visit nearest SwiftPay agent with your CNIC to withdraw.</p>
+    <button class="btn-primary full" onclick="processWithdraw()">
+      <i class="fa-solid fa-money-bill-wave"></i> Generate Code
+    </button>
+  </div>
+
+  <!-- Mobile Recharge Modal -->
+  <div class="modal" id="mobile-modal">
+    <div class="modal-handle"></div>
+    <h3 class="modal-title"><i class="fa-solid fa-mobile-screen teal-text"></i> Mobile Recharge</h3>
+    <div class="network-selector">
+      <button class="network-btn active" data-network="jazz">Jazz</button>
+      <button class="network-btn" data-network="zong">Zong</button>
+      <button class="network-btn" data-network="telenor">Telenor</button>
+      <button class="network-btn" data-network="ufone">Ufone</button>
+    </div>
+    <div class="input-group">
+      <i class="fa-solid fa-phone input-icon"></i>
+      <input type="tel" id="recharge-phone" placeholder="Mobile Number" />
+    </div>
+    <div class="recharge-presets">
+      <button class="preset-chip" onclick="setRecharge(100)">Rs 100</button>
+      <button class="preset-chip" onclick="setRecharge(200)">Rs 200</button>
+      <button class="preset-chip" onclick="setRecharge(500)">Rs 500</button>
+      <button class="preset-chip" onclick="setRecharge(1000)">Rs 1000</button>
+    </div>
+    <div class="input-group">
+      <i class="fa-solid fa-pakistani-rupee-sign input-icon"></i>
+      <input type="number" id="recharge-amount" placeholder="Or enter custom amount" />
+    </div>
+    <button class="btn-primary full" onclick="processRecharge()">
+      <i class="fa-solid fa-bolt"></i> Recharge Now
+    </button>
+  </div>
+
+  <!-- Bill Payment Modal -->
+  <div class="modal" id="bill-modal">
+    <div class="modal-handle"></div>
+    <h3 class="modal-title"><i class="fa-solid fa-bolt orange-text"></i> Pay Bills</h3>
+    <div class="bill-categories">
+      <button class="bill-cat" onclick="showToast('Electricity bill selected')">
+        <i class="fa-solid fa-plug"></i><span>Electricity</span>
+      </button>
+      <button class="bill-cat" onclick="showToast('Gas bill selected')">
+        <i class="fa-solid fa-fire"></i><span>Gas</span>
+      </button>
+      <button class="bill-cat" onclick="showToast('Internet bill selected')">
+        <i class="fa-solid fa-wifi"></i><span>Internet</span>
+      </button>
+      <button class="bill-cat" onclick="showToast('Water bill selected')">
+        <i class="fa-solid fa-droplet"></i><span>Water</span>
+      </button>
+      <button class="bill-cat" onclick="showToast('TV bill selected')">
+        <i class="fa-solid fa-tv"></i><span>Cable TV</span>
+      </button>
+      <button class="bill-cat" onclick="showToast('Tax selected')">
+        <i class="fa-solid fa-receipt"></i><span>Tax</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Notification Panel -->
+  <div class="modal" id="notify-modal">
+    <div class="modal-handle"></div>
+    <h3 class="modal-title">Notifications</h3>
+    <div class="notify-list">
+      <div class="notify-item unread">
+        <div class="notify-icon green"><i class="fa-solid fa-arrow-down"></i></div>
+        <div class="notify-body">
+          <p class="notify-title">Money Received</p>
+          <p class="notify-text">You received PKR 5,000 from Ali Hassan</p>
+          <span class="notify-time">2 min ago</span>
+        </div>
+      </div>
+      <div class="notify-item unread">
+        <div class="notify-icon orange"><i class="fa-solid fa-tag"></i></div>
+        <div class="notify-body">
+          <p class="notify-title">Cashback Credited</p>
+          <p class="notify-text">PKR 120 cashback added to your wallet</p>
+          <span class="notify-time">1 hour ago</span>
+        </div>
+      </div>
+      <div class="notify-item unread">
+        <div class="notify-icon purple"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="notify-body">
+          <p class="notify-title">Security Alert</p>
+          <p class="notify-text">New login from Lahore device</p>
+          <span class="notify-time">3 hours ago</span>
+        </div>
+      </div>
+      <div class="notify-item">
+        <div class="notify-icon teal"><i class="fa-solid fa-paper-plane"></i></div>
+        <div class="notify-body">
+          <p class="notify-title">Money Sent</p>
+          <p class="notify-text">You sent PKR 2,000 to Sami Ullah</p>
+          <span class="notify-time">Yesterday</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Modal -->
+  <div class="modal" id="qr-modal">
+    <div class="modal-handle"></div>
+    <h3 class="modal-title">Scan to Pay</h3>
+    <div class="scanner-wrap">
+      <div class="scanner-frame">
+        <div class="scanner-line"></div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+      </div>
+      <p class="scanner-text">Point camera at any QR code to pay</p>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal success-modal" id="success-modal">
+    <div class="modal-handle"></div>
+    <div class="success-animation">
+      <div class="success-circle">
+        <i class="fa-solid fa-check success-check"></i>
+      </div>
+    </div>
+    <h3 class="success-title" id="success-title">Transaction Successful!</h3>
+    <p class="success-msg" id="success-msg">Your money has been sent successfully.</p>
+    <div class="success-detail" id="success-detail"></div>
+    <button class="btn-primary full" onclick="closeAllModals()">Done</button>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check toast-icon"></i>
+    <span id="toast-msg">Action completed</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
